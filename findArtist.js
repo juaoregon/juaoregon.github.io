@@ -20,26 +20,6 @@ Handlebars.registerHelper('bio', function(text) {
     return replace.trim();
 });
 
-Handlebars.registerHelper('each_with_sort', function(array, key, options){
-    array = array.sort(function(a, b){
-        a = a[key];
-        b = b[key];
-        if (a > b) {
-            return 1;
-        }else if (a == b) {
-            return 0;
-        }else{
-            return -1;
-        };
-    });
-    res = '';
-    for (var i = 0; i < array.length; i++) {
-        res += options.fn(array[i]);
-    };
-    return res;
-});     
-
-
 var searchAlbums = function (query) {
     $.ajax({
         url: 'https://api.spotify.com/v1/search',

@@ -62,7 +62,7 @@
 			Bio
 		</div>
 		<div id='bioIcons'>
-		{{#each_with_sort response.biographies 'site'}}
+		{{#each response.biographies}}
 			{{#if @first}}
 				<a href="javascript: show('bioText{{site}}');" id="bioSource{{site}}" class="bioSelected" title="{{site}}" onclick="selectSource('{{site}}')">
 					<img id="bioSourceImg{{site}}" src="Images/Icons/{{site}}.png" width="33" height="33">
@@ -72,7 +72,7 @@
 					<img id="bioSourceImg{{site}}" src="Images/Icons/{{site}}.png" width="33" height="33">
 				</a>
 			{{/if}}
-		{{/each_with_sort}}
+		{{/each}}
 		</div>
 	</h1>
 	{{#each response.biographies}}
