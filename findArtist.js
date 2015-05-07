@@ -15,7 +15,7 @@ Handlebars.registerHelper('bio', function(text) {
     var subject = text;
     var regex = /(?:\r?\n){2}([^\r\n]+)|(?:^|\r?\n)([^\r\n]+)/g;
     var replace = subject.replace(regex, function(match, p1, p2) {
-        return '\n<p>' + ((p1==undefined)? p2 : '<b>' + p1 + '</b>' ) + '</p>';
+        return '\n<p>' + ((p1===undefined)? p2 : '<b>' + p1 + '</b>' ) + '</p>';
     });
     return replace.trim();
 });
@@ -34,7 +34,7 @@ var searchAlbums = function (query) {
 };
 
 function limpiar(text){
-      var text = text.toLowerCase();
+      text.toLowerCase();
       text = text.replace(/ /g, '+');
       text = text.replace(/&/, 'and');
       text = text.replace(/[áàäâå]/g, 'a');
@@ -56,7 +56,7 @@ var searchImg = function (artist) {
             imgPlaceholder.innerHTML = imgTemplate(response);
         }   
     });
-}
+};
 
 var searchBio = function (name) {
     name = name.replace(/ /g,"+");
@@ -67,7 +67,7 @@ var searchBio = function (name) {
             bioPlaceholder.innerHTML = bioTemplate(response);
         }   
     });
-}
+};
 
 document.getElementById('search-form').addEventListener('submit', function (e) {
     e.preventDefault();
