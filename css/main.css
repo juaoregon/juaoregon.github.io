@@ -5,7 +5,12 @@ body {
     width: 97%;
 }
 #search-form {
-	text-align: center;
+	display: inline;
+ 	vertical-align: super;
+}
+#videoIcon {
+	display: inline;
+	vertical-align: sub;
 }
 .form-control {
 	height: 30px;
