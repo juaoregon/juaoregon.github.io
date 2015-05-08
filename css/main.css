@@ -9,7 +9,7 @@ body {
  	vertical-align: super;
 }
 #videoIcon {
-	display: inline;
+	display: none;
 	vertical-align: sub;
 }
 .form-control {

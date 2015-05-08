@@ -84,6 +84,7 @@ var searchBio = function (name) {
 
 document.getElementById('search-form').addEventListener('submit', function (e) {
     e.preventDefault();
+    $('#videoIcon').css("display","inline");
     searchBio(document.getElementById('query').value);
     searchAlbums(document.getElementById('query').value);
     searchImg(document.getElementById('query').value);
