@@ -11,6 +11,7 @@ It is developed with HTML5, CSS3 and JavaScript and uses external libraries like
 * Artist Video Button (it will display a _fancybox_ with a playlist of all the artist's videos available).
 * Refine album searching methods and filters.
 * Code optimization for better efficiency.
+* Documentation and comments.
 
 ## License
 [MIT](http://opensource.org/licenses/mit-license.php) License.
