@@ -1,0 +1,125 @@
+@import url('http://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+    padding: 20px;
+    width: 97%;
+}
+#search-form {
+	text-align: center;
+}
+.form-control {
+	height: 30px;
+	width: 500px;
+    font-family: Montserrat;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid #D0D0D0;
+    background: url('Images/Icons/search.jpg') no-repeat 1px;
+    outline: 0 !important;
+}
+h1, .btn-primary, #noResults{
+    font-family: Montserrat;
+}
+.subtitulo, .titulo{
+	font-family: Montserrat;
+	text-align: center;
+}
+#results {
+	width: 50%;
+	float: left;
+	z-index: -1;
+}
+#bio {
+	font-family: Montserrat;
+	z-index: -1;
+	width: 50%;
+	float: right;
+}
+.ui-helper-hidden-accessible {
+	visibility: hidden;
+}
+.ui-autocomplete, .ui-front, .ui-menu, .ui-widget, .ui-widget-content {
+	font-family: Montserrat;
+	position: absolute;
+	top: 240px !important;
+	list-style-type: none;
+	background-color: #FFFFFF;
+	width: 450px !important;
+	max-height:453px;
+    height:auto !important;
+    height:453px;
+	overflow-y: scroll;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	z-index: 1;
+}
+.ui-state-focus {
+	background-color: #F5F5F5;
+}
+#ui-id-1::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 3px #FFFFFF;
+	border-radius: 10px;
+	background-color: #FFFFFF;
+}
+#ui-id-1::-webkit-scrollbar{
+	border-radius: 10px;
+	width: 5px;
+	background-color: #FFFFFF;
+}
+#ui-id-1::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 3px #999999;
+	background-color: #999999;
+}
+#bioTitle {
+	float: left;
+	padding-right: 9px;
+}
+.bioNotSelected {
+	opacity: 0.5 !important;
+}
+.bioSelected {
+	opacity: 1;
+}
+a:link, a:visited {
+	color: inherit !important;
+	text-decoration: none !important;
+}
+.bioText {
+	font-family: Montserrat;
+	width: 100%;
+	text-align: justify;
+}
+.noBio, .noAlbums {
+	font-family: Montserrat;
+	width: 1000px;
+	text-align: justify;
+	position: absolute;
+}
+#blank {
+    position:relative;
+    float: left;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	z-index: -1;
+}
+#slideshow {
+    height:200px;
+    width: 300px;
+	z-index: -1;
+}
+#slideshow IMG {
+    position:absolute;
+    z-index:8;
+}
+
+#slideshow IMG.active {
+    z-index:10;
+}
+
+#slideshow IMG.last-active {
+    z-index:9;
+}
+p {
+    text-indent: 50px;
+}

@@ -6,7 +6,10 @@ var templateSource = document.getElementById('results-template').innerHTML,
     bioPlaceholder = document.getElementById('bio'),
     imgTemplateSource = document.getElementById('img-template').innerHTML,
     imgTemplate = Handlebars.compile(imgTemplateSource),
-    imgPlaceholder = document.getElementById('slideshow');
+    imgPlaceholder = document.getElementById('slideshow'),
+    videoTemplateSource = document.getElementById('video-template').innerHTML,
+    videoTemplate = Handlebars.compile(videoTemplateSource),
+    videoPlaceholder = document.getElementById('video-template');
 
 Handlebars.registerHelper('bio', function(text) {
     text = text.replace(/(\[\d\])/g, "");
@@ -33,7 +36,7 @@ var searchAlbums = function (query) {
     });
 };
 
-function limpiar(text){
+function clean(text){
       text.toLowerCase();
       text = text.replace(/ /g, '+');
       text = text.replace(/&/, 'and');
@@ -49,11 +52,21 @@ function limpiar(text){
    }
 
 var searchImg = function (artist) {
-    artist = limpiar(artist);
+    artist = clean(artist);
     $.ajax({
         url: 'https://developer.echonest.com/api/v4/artist/images?api_key=F8ZEW1YL4XQ9BEB2P&name='+ artist +'&format=json&start=0',
         success: function (response) {
             imgPlaceholder.innerHTML = imgTemplate(response);
+        }   
+    });
+};
+
+var searchVideo = function (artist) {
+    artist = clean(artist);
+    $.ajax({
+        url: 'https://developer.echonest.com/api/v4/artist/video?api_key=F8ZEW1YL4XQ9BEB2P&name='+ artist +'&format=json&start=0',
+        success: function (response) {
+            videoPlaceholder.innerHTML = videoTemplate(response);
         }   
     });
 };
@@ -74,4 +87,5 @@ document.getElementById('search-form').addEventListener('submit', function (e) {
     searchBio(document.getElementById('query').value);
     searchAlbums(document.getElementById('query').value);
     searchImg(document.getElementById('query').value);
+    searchVideo(document.getElementById('query').value);
 }, false);
