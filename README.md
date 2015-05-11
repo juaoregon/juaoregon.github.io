@@ -11,6 +11,7 @@ It is developed with HTML5, CSS3 and JavaScript and uses external libraries like
 * Artist Video Button (it will display a _fancybox_ with a playlist of all the artist's videos available).
 * Refine album searching methods and filters.
 * Loading mask/unmask for templates.
+* Scroll-to-top button.
 * Contemplate cases with no results.
 * Code optimization for better efficiency.
 * Documentation and comments.
