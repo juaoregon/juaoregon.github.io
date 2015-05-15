@@ -115,13 +115,13 @@ a:link, a:visited {
     position:relative;
     float: left;
 	padding-right: 20px;
-	padding-bottom: 20px;
 	z-index: -1;
 }
 #slideshow {
     height:200px;
     width: 300px;
 	z-index: -1;
+	margin-top: 5.2em;
 }
 #slideshow IMG {
     position:absolute;
