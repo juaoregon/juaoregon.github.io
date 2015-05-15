@@ -26,7 +26,7 @@ Handlebars.registerHelper('bio', function(text) {
 Handlebars.registerHelper("embedVideo", function(url) {
     if(url.indexOf('dailymotion') > -1){
         if(url.indexOf('embed') > -1){
-            videoPlaceholder.innerHTML += '<iframe width="480" height="269" src=' + url + 'frameborder="0" allowfullscreen></iframe>';
+            videoPlaceholder.innerHTML += '<iframe width="960" height="538" src=' + url + 'frameborder="0" allowfullscreen></iframe>';
         }else{
             $.ajax({
                 dataType: 'jsonp',
@@ -38,7 +38,7 @@ Handlebars.registerHelper("embedVideo", function(url) {
         }
     }else if(url.indexOf('youtube') > -1){
         url = 'http://www.youtube.com/embed/' + url.substring(url.indexOf("=")+1,url.lastIndexOf("&"));
-        videoPlaceholder.innerHTML += '<iframe width="480" height="269" src=' + url + 'frameborder="0" allowfullscreen></iframe>';
+        videoPlaceholder.innerHTML += '<iframe width="960" height="538" src=' + url + 'frameborder="0" allowfullscreen></iframe>';
     }
 });
 
@@ -75,6 +75,14 @@ var searchImg = function (artist) {
     $.ajax({
         url: 'https://developer.echonest.com/api/v4/artist/images?api_key=F8ZEW1YL4XQ9BEB2P&name='+ artist +'&format=json&start=0',
         success: function (response) {
+            var images = response.response.images;
+            for (var i = 0; i < images.length; i++) {
+                if (images[i].url.indexOf('myspace') > -1) {
+                    var imageIndex = images.indexOf(images[i]);
+                    delete images[imageIndex];
+                };
+            }
+            
             imgPlaceholder.innerHTML = imgTemplate(response);
         }   
     });
@@ -104,10 +112,6 @@ var searchBio = function (name) {
 document.getElementById('videoIcon').addEventListener('click', function (e) {
     searchVideo(document.getElementById('query').value);
 }, false);
-
-bioPlaceholder.addEventListener('load',function(){
-    bioPlaceholder.innerHTML += imgPlaceholder;
-});
 
 document.getElementById('search-form').addEventListener('submit', function (e) {
     e.preventDefault();
