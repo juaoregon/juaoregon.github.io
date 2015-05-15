@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="./css/normalize.css"/>
 		<link rel="shortcut icon" href="./css/Images/info-icon.png" />
 		<link rel="stylesheet" href="./fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+		<title>Wikify</title>
 		<div id="title" class="titulo">
 			<a id="infoIcon" href="#info" class="fancybox">
 				<img src="./css/Images/info-icon.png" width="33" height="33">
@@ -57,19 +58,13 @@
 				<img src="./css/Images/film-icon.png" width="33" height="33">
 			</a>
 		</div>
-		<div style="display:none;">
-			<div id="video">
-				<script id="video-template" type="text/x-handlebars-template">
-					{{#each response.video}}
-						{{#if @first}}
-							<video>
-								<source id="artistVideo" src="{{url}}" width="300" height="200">
-							</video>
-						{{/if}}
-					{{/each}}
-				</script>
-			</div>
+		<div id="video" style="display: none;">
 		</div>
+		<script id="video-template" type="text/x-handlebars-template">
+			{{#each response.video}}
+				{{embedVideo url}}
+			{{/each}}
+		</script>
 		<div id="results">
 		</div>
 		<script id="results-template" type="text/x-handlebars-template">
@@ -136,6 +131,10 @@
 				{{/if}}
 			{{/each}}
 		</script>
+		<a id="top" href="#top" class="scrollToTop">
+			<img src="./css/Images/up-arrow-icon.png" width="60" height="60">
+		</a>
+		<div id="loading"></div>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="./fancybox/source/jquery.fancybox.pack.js"></script>

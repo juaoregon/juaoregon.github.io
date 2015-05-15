@@ -9,7 +9,7 @@ var templateSource = document.getElementById('results-template').innerHTML,
     imgPlaceholder = document.getElementById('slideshow'),
     videoTemplateSource = document.getElementById('video-template').innerHTML,
     videoTemplate = Handlebars.compile(videoTemplateSource),
-    videoPlaceholder = document.getElementById('video-template');
+    videoPlaceholder = document.getElementById('video');
 
 Handlebars.registerHelper('bio', function(text) {
     text = text.replace(/(\[\d\])/g, "");
@@ -21,6 +21,25 @@ Handlebars.registerHelper('bio', function(text) {
         return '\n<p>' + ((p1===undefined)? p2 : '<b>' + p1 + '</b>' ) + '</p>';
     });
     return replace.trim();
+});
+
+Handlebars.registerHelper("embedVideo", function(url) {
+    if(url.indexOf('dailymotion') > -1){
+        if(url.indexOf('embed') > -1){
+            videoPlaceholder.innerHTML += '<iframe width="480" height="269" src=' + url + 'frameborder="0" allowfullscreen></iframe>';
+        }else{
+            $.ajax({
+                dataType: 'jsonp',
+                url: 'http://www.dailymotion.com/services/oembed?url='+ url,
+                success: function (response) {
+                    videoPlaceholder.innerHTML += response.html;
+                }
+            });
+        }
+    }else if(url.indexOf('youtube') > -1){
+        url = 'http://www.youtube.com/embed/' + url.substring(url.indexOf("=")+1,url.lastIndexOf("&"));
+        videoPlaceholder.innerHTML += '<iframe width="480" height="269" src=' + url + 'frameborder="0" allowfullscreen></iframe>';
+    }
 });
 
 var searchAlbums = function (query) {
@@ -82,11 +101,18 @@ var searchBio = function (name) {
     });
 };
 
+document.getElementById('videoIcon').addEventListener('click', function (e) {
+    searchVideo(document.getElementById('query').value);
+}, false);
+
+bioPlaceholder.addEventListener('load',function(){
+    bioPlaceholder.innerHTML += imgPlaceholder;
+});
+
 document.getElementById('search-form').addEventListener('submit', function (e) {
     e.preventDefault();
     $('#videoIcon').css("display","inline");
     searchBio(document.getElementById('query').value);
     searchAlbums(document.getElementById('query').value);
     searchImg(document.getElementById('query').value);
-    searchVideo(document.getElementById('query').value);
 }, false);

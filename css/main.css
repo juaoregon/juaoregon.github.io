@@ -12,6 +12,16 @@ body {
 	display: none;
 	vertical-align: sub;
 }
+#video{
+	width: 480px;
+	height: 270px;
+}
+.scrollToTop{
+	position: fixed;
+	display: none;
+	right: 20px;
+	bottom: 20px;
+}
 .form-control {
 	height: 30px;
 	width: 500px;

@@ -7,7 +7,7 @@ It is developed with HTML5, CSS3 and JavaScript and uses external libraries like
 ## TODO List
 * CSS media queries.
 * Biography text design.
-* Similar Artists Button (it will display a _fancybox_ with artists that are similar to our).
+* Similar Artists Button (it will display a _fancybox_ with artists that are similar to ours).
 * Artist Video Button (it will display a _fancybox_ with a playlist of all the artist's videos available).
 * Refine album searching methods and filters.
 * Loading mask/unmask for templates.
