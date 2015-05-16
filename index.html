@@ -58,7 +58,10 @@
 			<form id="search-form">
 			    <input type="text" id="query" value="" class="form-control" placeholder="  Search..." onfocus="this.placeholder = ''"></input>
 			</form>
-			<a id="videoIcon" href="#video" class="iframe">
+			<a id="artistIcon" href="javascript: showDisplay('artist');" class="bioSelected">
+				<img src="./css/Images/artist-icon.png" width="33" height="33">
+			</a>
+			<a id="videoIcon" href="javascript: showDisplay('video');" class="bioNotSelected">
 				<img src="./css/Images/film-icon.png" width="33" height="33">
 			</a>
 		</div>
@@ -70,12 +73,12 @@
 			</div>
 			<br>
 			{{#each response.artists}}
-				<a href="#" id="similarArtist{{@index}}" class="similarArtist">
+				<a href="javascript: searchSimilarArtist('{{name}}');" id="similarArtist{{@index}}" class="similarArtist">
 					{{name}}
 				</a>
 			{{/each}}
 		</script>
-		<div id="video" style="display: none;" data-fancybox-group='gallery'>
+		<div id="video" style="display: none;">
 		</div>
 		<script id="video-template" type="text/x-handlebars-template">
 			{{#each response.video}}
@@ -151,7 +154,6 @@
 		<a id="top" href="#top" class="scrollToTop">
 			<img src="./css/Images/up-arrow-icon.png" width="60" height="60">
 		</a>
-		<div id="loading"></div>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="./fancybox/source/jquery.fancybox.pack.js"></script>

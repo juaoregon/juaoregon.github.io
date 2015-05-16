@@ -123,36 +123,30 @@ var searchBio = function (name) {
     });
 };
 
-document.getElementById('videoIcon').addEventListener('click', function (e) {
-    e.preventDefault();
-    searchVideo(document.getElementById('query').value);
-}, false);
-
 document.getElementById('similarIcon').addEventListener('click', function (e) {
     e.preventDefault();
     searchSimilar(document.getElementById('query').value);
-
 }, false);
 
-similarPlaceholder.addEventListener('load', function () {
-    console.log("@@@@@@@@@@@@@@@@");
-    document.getElementById('similarArtist').addEventListener('click', function (e) {
-        e.preventDefault();
-        console.log("234234234 ");
-        $('#videoIcon').css("display","inline");
-        $('#similarIcon').css("display","inline");
-        searchBio($(this).value);
-        searchAlbums($(this).value);
-        searchImg($(this).value);
-        $.fancybox.close;
-    }, false);
-}, false);
+function searchSimilarArtist(name) {
+    $('#videoIcon').css("display","inline");
+    $('#similarIcon').css("display","inline");
+    searchBio(name);
+    searchAlbums(name);
+    searchImg(name);
+    searchVideo(name);
+    searchSimilar(name);
+    showDisplay("artist");
+    parent.$.fancybox.close();
+}
 
 document.getElementById('search-form').addEventListener('submit', function (e) {
     e.preventDefault();
     $('#videoIcon').css("display","inline");
+    $('#artistIcon').css("display","inline");
     $('#similarIcon').css("display","inline");
     searchBio(document.getElementById('query').value);
     searchAlbums(document.getElementById('query').value);
     searchImg(document.getElementById('query').value);
+    searchVideo(document.getElementById('query').value);
 }, false);

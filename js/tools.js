@@ -48,6 +48,24 @@ function show(elementId) {
 	if (element) element.style.display="block";
 }
 
+function showDisplay(source) {
+	if (source == "artist") {
+		document.getElementById("artistIcon").className = "bioSelected";
+		document.getElementById("videoIcon").className = "bioNotSelected";
+		document.getElementById("bio").style.display="block";
+		document.getElementById("slideshow").style.display="block";
+		document.getElementById("results").style.display="block";
+		document.getElementById("video").style.display="none";
+	}else{
+		document.getElementById("videoIcon").className = "bioSelected";
+		document.getElementById("artistIcon").className = "bioNotSelected";
+		document.getElementById("video").style.display="block";
+		document.getElementById("bio").style.display="none";
+		document.getElementById("slideshow").style.display="none";
+		document.getElementById("results").style.display="none";
+	};
+}
+
 function slideSwitch() {
 	var $active = $('#slideshow IMG.active');
 	if ( $active.length == 0 ) $active = $('#slideshow IMG:last');
@@ -65,19 +83,7 @@ function slideSwitch() {
 
 $(document).ready(function() {
 	$("a#infoIcon").fancybox();
-	$("a#videoIcon").fancybox({
-		'autoSize': false,
-    	'width': "auto",
-		'height': "auto",
-	    'transitionIn': 'none',
-	    'transitionOut': 'none',
-	    'changeSpeed': 100,
-	    'changeFade': 100,
-	    'opacity': 'true',
-	});
 	$("a#similarIcon").fancybox();
-	$(".iframe").fancybox();
-
 	$("#top").click(function(){
 		$("html,body").animate({scrollTop:0}, "slow");
 		return false;

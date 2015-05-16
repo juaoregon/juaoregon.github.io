@@ -8,11 +8,7 @@ body {
 	display: inline;
  	vertical-align: super;
 }
-#videoIcon {
-	display: none;
-	vertical-align: sub;
-}
-#similarIcon {
+#videoIcon, #artistIcon, #similarIcon{
 	display: none;
 	vertical-align: sub;
 }
@@ -54,6 +50,13 @@ h1, .btn-primary, #noResults{
 	z-index: -1;
 	width: 50%;
 	float: right;
+}
+#video{
+	margin: 2em;
+	text-align: center;
+}
+.iframe{
+	margin: 1em;
 }
 .ui-helper-hidden-accessible {
 	visibility: hidden;
