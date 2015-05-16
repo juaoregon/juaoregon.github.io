@@ -10,6 +10,9 @@ var templateSource = document.getElementById('results-template').innerHTML,
     videoTemplateSource = document.getElementById('video-template').innerHTML,
     videoTemplate = Handlebars.compile(videoTemplateSource),
     videoPlaceholder = document.getElementById('video');
+    similarTemplateSource = document.getElementById('similar-template').innerHTML,
+    similarTemplate = Handlebars.compile(similarTemplateSource),
+    similarPlaceholder = document.getElementById('similar');
 
 Handlebars.registerHelper('bio', function(text) {
     text = text.replace(/(\[\d\])/g, "");
@@ -26,19 +29,20 @@ Handlebars.registerHelper('bio', function(text) {
 Handlebars.registerHelper("embedVideo", function(url) {
     if(url.indexOf('dailymotion') > -1){
         if(url.indexOf('embed') > -1){
-            videoPlaceholder.innerHTML += '<iframe width="960" height="538" src=' + url + 'frameborder="0" allowfullscreen></iframe>';
+            videoPlaceholder.innerHTML += '<iframe width="580" height="269" class="iframe" src=' + url + 'frameborder="0" allowfullscreen></iframe>';
         }else{
             $.ajax({
                 dataType: 'jsonp',
                 url: 'http://www.dailymotion.com/services/oembed?url='+ url,
                 success: function (response) {
+                    response.html = response.html.slice(0, 8) + " class='iframe' " + response.html.slice(8);
                     videoPlaceholder.innerHTML += response.html;
                 }
             });
         }
     }else if(url.indexOf('youtube') > -1){
         url = 'http://www.youtube.com/embed/' + url.substring(url.indexOf("=")+1,url.lastIndexOf("&"));
-        videoPlaceholder.innerHTML += '<iframe width="960" height="538" src=' + url + 'frameborder="0" allowfullscreen></iframe>';
+        videoPlaceholder.innerHTML += '<iframe width="580" height="269" class="iframe" src=' + url + 'frameborder="0" allowfullscreen></iframe>';
     }
 });
 
@@ -98,6 +102,16 @@ var searchVideo = function (artist) {
     });
 };
 
+var searchSimilar = function (artist) {
+    artist = clean(artist);
+    $.ajax({
+        url: 'http://developer.echonest.com/api/v4/artist/similar?api_key=F8ZEW1YL4XQ9BEB2P&name=' + artist +'&format=json&start=0',
+        success: function (response) {
+            similarPlaceholder.innerHTML = similarTemplate(response);
+        }   
+    });
+};
+
 var searchBio = function (name) {
     name = name.replace(/ /g,"+");
     name = name.replace(/&/g,"and");
@@ -110,12 +124,34 @@ var searchBio = function (name) {
 };
 
 document.getElementById('videoIcon').addEventListener('click', function (e) {
+    e.preventDefault();
     searchVideo(document.getElementById('query').value);
+}, false);
+
+document.getElementById('similarIcon').addEventListener('click', function (e) {
+    e.preventDefault();
+    searchSimilar(document.getElementById('query').value);
+
+}, false);
+
+similarPlaceholder.addEventListener('load', function () {
+    console.log("@@@@@@@@@@@@@@@@");
+    document.getElementById('similarArtist').addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log("234234234 ");
+        $('#videoIcon').css("display","inline");
+        $('#similarIcon').css("display","inline");
+        searchBio($(this).value);
+        searchAlbums($(this).value);
+        searchImg($(this).value);
+        $.fancybox.close;
+    }, false);
 }, false);
 
 document.getElementById('search-form').addEventListener('submit', function (e) {
     e.preventDefault();
     $('#videoIcon').css("display","inline");
+    $('#similarIcon').css("display","inline");
     searchBio(document.getElementById('query').value);
     searchAlbums(document.getElementById('query').value);
     searchImg(document.getElementById('query').value);

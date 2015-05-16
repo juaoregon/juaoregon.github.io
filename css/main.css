@@ -12,9 +12,14 @@ body {
 	display: none;
 	vertical-align: sub;
 }
-#video{
-	width: 480px;
-	height: 270px;
+#similarIcon {
+	display: none;
+	vertical-align: sub;
+}
+#similarTitle, .similarArtist{
+	font-family: Montserrat;
+	display: block;
+	text-align: center;
 }
 .scrollToTop{
 	position: fixed;
@@ -56,7 +61,7 @@ h1, .btn-primary, #noResults{
 .ui-autocomplete, .ui-front, .ui-menu, .ui-widget, .ui-widget-content {
 	font-family: Montserrat;
 	position: absolute;
-	top: 240px !important;
+	top: 265px !important;
 	list-style-type: none;
 	background-color: #FFFFFF;
 	width: 450px !important;
@@ -109,12 +114,12 @@ a:link, a:visited {
 	font-family: Montserrat;
 	width: 1000px;
 	text-align: justify;
-	position: absolute;
 }
 #blank {
     position:relative;
     float: left;
 	padding-right: 20px;
+	padding-bottom: 5px;
 	z-index: -1;
 }
 #slideshow {

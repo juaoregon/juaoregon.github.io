@@ -64,9 +64,19 @@ function slideSwitch() {
 }
 
 $(document).ready(function() {
-	show('loading', false);
 	$("a#infoIcon").fancybox();
-	$("a#videoIcon").fancybox();
+	$("a#videoIcon").fancybox({
+		'autoSize': false,
+    	'width': "auto",
+		'height': "auto",
+	    'transitionIn': 'none',
+	    'transitionOut': 'none',
+	    'changeSpeed': 100,
+	    'changeFade': 100,
+	    'opacity': 'true',
+	});
+	$("a#similarIcon").fancybox();
+	$(".iframe").fancybox();
 
 	$("#top").click(function(){
 		$("html,body").animate({scrollTop:0}, "slow");

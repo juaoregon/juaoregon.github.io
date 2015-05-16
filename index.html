@@ -11,12 +11,13 @@
 				<img src="./css/Images/info-icon.png" width="33" height="33">
 			</a>
 			<h1>
-				<a id="index" href="./index.php">
-					Welcome to Wikify
+				<a id="index" href="./index.html" style="font-size: larger;">
+					Wikify
 				</a>
 			</h1>
 		</div>
 		<div id="subtitle" class="subtitulo">
+			Welcome to Wikify&reg <br>
 			We have combined the power of Wikipedia&reg and Last.fm&reg <br>
 			with the musical diversity of Spotify&reg to create a tool to <br>
 			search, learn, listen and enjoy
@@ -51,14 +52,30 @@
 	<body>
 		<br>
 		<div style="text-align: center;">
+			<a id="similarIcon" href="#similar" class="fancybox">
+				<img src="./css/Images/similar-icon.png" width="33" height="33">
+			</a>
 			<form id="search-form">
 			    <input type="text" id="query" value="" class="form-control" placeholder="  Search..." onfocus="this.placeholder = ''"></input>
 			</form>
-			<a id="videoIcon" href="#video" class="fancybox">
+			<a id="videoIcon" href="#video" class="iframe">
 				<img src="./css/Images/film-icon.png" width="33" height="33">
 			</a>
 		</div>
-		<div id="video" style="display: none;">
+		<div id="similar" style="display: none;">
+		</div>
+		<script id="similar-template" type="text/x-handlebars-template">
+			<div id="similarTitle" style="font-weight: bold; font-size: 20px;">
+				SIMILAR ARTISTS
+			</div>
+			<br>
+			{{#each response.artists}}
+				<a href="#" id="similarArtist{{@index}}" class="similarArtist">
+					{{name}}
+				</a>
+			{{/each}}
+		</script>
+		<div id="video" style="display: none;" data-fancybox-group='gallery'>
 		</div>
 		<script id="video-template" type="text/x-handlebars-template">
 			{{#each response.video}}
