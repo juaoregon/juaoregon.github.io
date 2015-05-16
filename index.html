@@ -71,9 +71,15 @@
 			<div id="similarTitle" style="font-weight: bold; font-size: 20px;">
 				SIMILAR ARTISTS
 			</div>
+			<div id="similarSubtitle" style="font-family: Montserrat; text-align: center;">
+				These are some artists provided by <img src="./css/Images/echoNest1.png" width="107" height="47"><br>
+				whose genre and musical style are similar to the artist you just searched for. <br>
+				Click on the name of the new artist you want to search for.
+				<br>
+			</div>
 			<br>
 			{{#each response.artists}}
-				<a href="javascript: searchSimilarArtist('{{name}}');" id="similarArtist{{@index}}" class="similarArtist">
+				<a href="javascript: searchSimilarArtist('{{name}}');" id="similarArtist{{@index}}" style="font-weight: bold;" class="similarArtist">
 					{{name}}
 				</a>
 			{{/each}}
