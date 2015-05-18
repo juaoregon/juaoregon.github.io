@@ -138,6 +138,7 @@ function searchSimilarArtist(name) {
     searchSimilar(name);
     showDisplay("artist");
     parent.$.fancybox.close();
+    document.getElementById('query').value = name;
 }
 
 document.getElementById('search-form').addEventListener('submit', function (e) {
