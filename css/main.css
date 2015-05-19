@@ -113,9 +113,9 @@ a:link, a:visited {
 	width: 100%;
 	text-align: justify;
 }
-.noBio, .noAlbums {
+.noBio, .noAlbums, .noVideo {
 	font-family: Montserrat;
-	width: 1000px;
+	width: 100%;
 	text-align: justify;
 }
 #blank {
