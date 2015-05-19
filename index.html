@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="./css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/normalize.css"/>
+		<link rel="shortcut icon" href="./css/Images/info-icon.png" />
+		<link rel="stylesheet" href="./fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+		<title>Wikify</title>
+		<div id="title" class="titulo">
+			<a id="infoIcon" href="#info" class="fancybox">
+				<img src="./css/Images/info-icon.png" width="33" height="33">
+			</a>
+			<h1>
+				<a id="index" href="./index.html" style="font-size: larger;">
+					Wikify
+				</a>
+			</h1>
+		</div>
+		<div id="subtitle" class="subtitulo">
+			Welcome to Wikify&reg <br>
+			We have combined the power of Wikipedia&reg and Last.fm&reg <br>
+			with the musical diversity of Spotify&reg to create a tool to <br>
+			search, learn, listen and enjoy
+		</div>
+		<div style="display:none;">
+			<div id="info" style="font-family: Montserrat;">
+				Wikify&reg works with the Spotify&reg Desktop App. You can download it by clicking this icon
+				<a href="https://www.spotify.com/download" target="_blank">
+					<img src="./css/Images/step1.png" width="50" height="50" style="vertical-align: middle; padding-left: 5px;">
+				</a>
+				<br>
+				<br>
+				For the application to work properly, you must choose one of the artists that the search form suggests you.
+				<br>
+				Otherwise the application will not give good results.
+				<br>
+				<br>
+				For help and support using Wikify&reg, please contact us by email by clicking 
+				<a href="mailto:juaoregon@gmail.com?Subject=Wikify%20support" target="_blank" style="color: #000000 !important;"><b>here</b></a>.
+				<br>
+				<br>
+				Wikify&reg developed by <img src="./css/Images/ORERO.png" width="100" height="20" style="padding-left:2px;">&reg. All rights reserved.
+				<br>
+				v1.0.1 released on May 2015.
+				<br>
+				<br>
+				<img src="./css/Images/spotify-logo.png" style="float:left;" width="100" height="30">
+				<img src="./css/Images/echoNest2.png" style="float:right;">
+			</div>
+		</div>
+	</head>
+	<body>
+		<br>
+		<div style="text-align: center;">
+			<a id="similarIcon" href="#similar" class="fancybox">
+				<img src="./css/Images/similar-icon.png" width="33" height="33">
+			</a>
+			<form id="search-form">
+			    <input type="text" id="query" value="" class="form-control" placeholder="  Search..." onfocus="this.placeholder = ''"></input>
+			</form>
+			<a id="artistIcon" href="javascript: showDisplay('artist');" class="bioSelected">
+				<img src="./css/Images/artist-icon.png" width="33" height="33">
+			</a>
+			<a id="videoIcon" href="javascript: showDisplay('video');" class="bioNotSelected">
+				<img src="./css/Images/film-icon.png" width="33" height="33">
+			</a>
+		</div>
+		<div id="similar" style="display: none;">
+		</div>
+		<script id="similar-template" type="text/x-handlebars-template">
+			<div id="similarTitle" style="font-weight: bold; font-size: 20px;">
+				SIMILAR ARTISTS
+			</div>
+			<div id="similarSubtitle" style="font-family: Montserrat; text-align: center;">
+				These are some artists provided by <img src="./css/Images/echoNest1.png" width="107" height="47"><br>
+				whose genre and musical style are similar to the artist you just searched for. <br>
+				Click on the name of the new artist you want to search for.
+				<br>
+			</div>
+			<br>
+			{{#each response.artists}}
+				<a href="javascript: searchSimilarArtist('{{name}}');" id="similarArtist{{@index}}" style="font-weight: bold;" class="similarArtist">
+					{{name}}
+				</a>
+			{{else}}
+				<div id="noSimilar" style="font-weight: bold;" class="similarArtist">
+					No similar artists available for this artist
+				</div>
+			{{/each}}
+		</script>
+		<div id="video" style="display: none;">
+		</div>
+		<script id="video-template" type="text/x-handlebars-template">
+			{{#each response.video}}
+				{{embedVideo url}}
+			{{else}}
+				<div id="noVideo" style="text-align: center;" class="noVideo">
+					No videos available for this artist
+				</div>
+			{{/each}}
+		</script>
+		<div id="results">
+		</div>
+		<script id="results-template" type="text/x-handlebars-template">
+			<h1>
+				Albums
+			</h1>
+		    {{#each albums.items}}
+		    	<iframe src="https://embed.spotify.com/?uri={{uri}}" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+		    {{else}}
+				<div id="noAlbums" class="noAlbums">
+					No albums available for this artist
+				</div>
+			{{/each}}
+		</script>
+		<div id="bio">
+		</div>
+		<script id="bio-template" type="text/x-handlebars-template">
+			<h1>
+				<div id="bioTitle">
+					Bio
+				</div>
+				<div id='bioIcons'>
+				{{#each response.biographies}}
+					{{#if @first}}
+						<a href="javascript: show('bioText{{site}}');" id="bioSource{{site}}" class="bioSelected" title="{{site}}" onclick="selectSource('{{site}}')">
+							<img id="bioSourceImg{{site}}" src="./css/Images/{{site}}.png" width="33" height="33">
+						</a>
+					{{else}}
+						<a href="javascript: show('bioText{{site}}');" id="bioSource{{site}}" class="bioNotSelected" title="{{site}}" onclick="selectSource('{{site}}')">
+							<img id="bioSourceImg{{site}}" src="./css/Images/{{site}}.png" width="33" height="33">
+						</a>
+					{{/if}}
+				{{/each}}
+				</div>
+			</h1>
+			{{#each response.biographies}}
+				{{#if @first}}
+						<div id="bioText{{site}}" class="bioText" style="display:block">
+							<img id="blank" src="./css/Images/blank.png" width="300" height="200">
+							<p>{{{bio text}}}</p>
+						</div>
+				{{else}}
+					{{#if text}}
+						<div id="bioText{{site}}" class="bioText" style="display:none">
+							<img id="blank" src="./css/Images/blank.png" width="300" height="200">
+							<p>{{{bio text}}}</p>
+						</div>
+					{{/if}}
+				{{/if}}
+			{{else}}
+				<div id="noBio" class="noBio">
+					No bio available for this artist
+				</div>
+			{{/each}}
+		</script>
+		<div id="slideshow">
+		</div>
+		<script id="img-template" type="text/x-handlebars-template">
+			{{#each response.images}}
+				{{#if @first}}
+					<img id="artistImage{{@index}}" alt="" src="{{url}}" width="300" height="200" class="active">
+				{{else}}
+					<img id="artistImage{{@index}}" alt="" src="{{url}}" width="300" height="200">
+				{{/if}}
+			{{/each}}
+		</script>
+		<a id="top" href="#top" class="scrollToTop">
+			<img src="./css/Images/up-arrow-icon.png" width="60" height="60">
+		</a>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="./fancybox/source/jquery.fancybox.pack.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+		<script type="text/javascript" src="./js/findArtist.js"></script>
+		<script type="text/javascript" src="./js/tools.js"></script>
+	</body>
+</html>
