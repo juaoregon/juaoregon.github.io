@@ -13,7 +13,7 @@ It is developed with HTML5, CSS3 and JavaScript and uses JavaScript template fra
 * ~~Loading mask/unmask for templates.~~
 * ~~Scroll-to-top button.~~
 * Contemplate cases with no results.
-* Code optimization for better efficiency.
+* Code refactoring for better efficiency.
 * Documentation and comments.
 
 ## License
