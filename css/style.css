@@ -418,6 +418,7 @@ hr {
 .team-social .social-deviantart a{background: #8da356;}
 .team-social .social-tumblr a{background: #35465c;}
 .team-social .social-instagram a{background: #9b6954;}
+.team-social .social-github a{background: #000000;}
 .team-social .social-vimeo a{background: #51a6d3;}
 .team-social .social-facebook a:hover{background: #4893ce;}
 .team-social .social-twitter a:hover{background: #82e6ff;}
@@ -425,6 +426,7 @@ hr {
 .team-social .social-deviantart a:hover{background: #adc376;}
 .team-social .social-tumblr a:hover{background: #5d6a7c;}
 .team-social .social-instagram a:hover{background: #b99687;}
+.team-social .social-github a:hover{background: #4c4c4c;}
 .team-social .social-vimeo a:hover{background: #71c6f3;}
 
 
@@ -512,6 +514,7 @@ form#contact-form input:focus,form#contact-form select:focus,form#contact-form t
 .company-social .social-deviantart a{background: #8da356;}
 .company-social .social-tumblr a{background: #35465c;}
 .company-social .social-instagram a{background: #9b6954;}
+.company-social .social-github a{background: #000000;}
 .company-social .social-vimeo a{background: #51a6d3;}
 .company-social .social-facebook a:hover{background: #4893ce;}
 .company-social .social-twitter a:hover{background: #82e6ff;}
@@ -519,6 +522,7 @@ form#contact-form input:focus,form#contact-form select:focus,form#contact-form t
 .company-social .social-deviantart a:hover{background: #adc376;}
 .company-social .social-tumblr a:hover{background: #5d6a7c;}
 .company-social .social-instagram a:hover{background: #b99687;}
+.company-social .social-github a:hover{background: #4c4c4c;}
 .company-social .social-vimeo a:hover{background: #71c6f3;}
 
 
