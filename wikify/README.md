@@ -1,5 +1,5 @@
 # Wikify
-Wikify is a web application that uses the Spotify Web APIPlayer and the Echo Nest to help you find music, videos and biographies of your favourite artists. You can check it out [here](http://juaoregon.github.io/wikify/wikify.html).
+Wikify is a web application that uses the Spotify Web API and the Echo Nest to help you find music, videos and biographies of your favourite artists. You can check it out [here](http://juaoregon.github.io/wikify/wikify.html).
 
 ## Tools & languages
 It is developed with HTML5, CSS3 and JavaScript and uses JavaScript template frameworks like [Handlebars.js](http://handlebarsjs.com/), CSS files like [normalize.css](http://necolas.github.io/normalize.css/) and multi-media _lightbox_ tools like [Fancybox](http://fancybox.net/home). It also uses external APIs like [Spotify Web API](https://developer.spotify.com/web-api/) and the [Echo Nest API](http://developer.echonest.com/docs/v4).
