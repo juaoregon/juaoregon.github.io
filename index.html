@@ -17,26 +17,6 @@
 	    <link href="css/style.css" rel="stylesheet">
 		<link href="color/default.css" rel="stylesheet">
 
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_MoDY0lZf3gzBHltpbnlLC_BB-DlnX7Q"></script>
-		<script>
-		    function initialize() {
-		    	var mapCanvas = document.getElementById('map');
-		        var mapOptions = {
-		        	center: new google.maps.LatLng(47.37887, 8.483023),
-		        	zoom: 17,
-		        	mapTypeId: google.maps.MapTypeId.ROADMAP
-		        }
-		    	var map = new google.maps.Map(mapCanvas, mapOptions);
-		    	var marker = new google.maps.Marker({
-		    		position: new google.maps.LatLng(47.37887, 8.483023),
-		    		animation: google.maps.Animation.DROP
-		    	});
-
-		    	marker.setMap(map);
-		    }
-		    google.maps.event.addDomListener(window, 'load', initialize);
-	    </script>
-
 	</head>
 
 	<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
