@@ -36,3 +36,7 @@ footer {
   background-color: #C6CACC;
   border-color: #C6CACC;
 }
+
+.service-icon img {
+  border-radius: 50%;
+}
